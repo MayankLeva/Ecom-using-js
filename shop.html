@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — LUMIÈRE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+
+<body class="page-top">
+
+  <!-- ══════════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════════ -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">Lumi<span>è</span>re</a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html" class="active">Shop</a></li>
+          <li><a href="cart.html">Cart</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="cart.html" class="cart-icon-btn">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <path d="M16 10a4 4 0 01-8 0" />
+            </svg>
+            Cart
+            <!-- TODO: Populate badge count from localStorage cart -->
+            <span class="cart-badge">0</span>
+          </a>
+          <button class="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="cart.html">Cart</a>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SHOP PAGE HEADER
+  ══════════════════════════════════════════ -->
+  <header class="shop-header">
+    <div class="container">
+      <h1 class="shop-title">The Collection</h1>
+      <p class="shop-subtitle">Thoughtfully curated, exceptionally made.</p>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════
+       SHOP LAYOUT
+  ══════════════════════════════════════════ -->
+  <main class="shop-layout">
+    <div class="container">
+
+      <!-- ── Toolbar: Filters + Sort ── -->
+      <div class="shop-toolbar">
+
+        <!-- Category Filters -->
+        <!-- TODO: Fetch categories from API and render dynamically -->
+        <!-- TODO: Filter products based on selected category -->
+        <div class="filter-group">
+          <span class="filter-label">Filter:</span>
+          <button class="filter-btn active" data-category="all">All</button>
+          <button class="filter-btn" data-category="electronics">Electronics</button>
+          <button class="filter-btn" data-category="jewelery">Jewelery</button>
+          <button class="filter-btn" data-category="men's clothing">Men's Clothing</button>
+          <button class="filter-btn" data-category="women's clothing">Women's Clothing</button>
+        </div>
+
+        <!-- Sort + Count -->
+        <div class="sort-group">
+          <span class="products-count" id="products-count">
+            <!-- TODO: Dynamically update count when filtering -->
+            12 products
+          </span>
+          <!-- TODO: Sort products based on selected value -->
+          <select class="sort-select" aria-label="Sort products">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="newest">Newest</option>
+            <option value="rating">Best Rated</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- ── Product Grid ── -->
+      <!--
+        TODO: Fetch products from API (e.g. Fake Store API):
+          GET https://fakestoreapi.com/products
+          GET https://fakestoreapi.com/products/category/{category}
+
+        TODO: Render products dynamically using JS:
+          const grid = document.getElementById('shop-products-grid');
+          products.forEach(product => {
+            grid.innerHTML += buildProductCard(product);
+          });
+
+        TODO: On filter click, re-fetch/filter and re-render
+        TODO: On sort change, re-sort and re-render
+      -->
+      <div class="product-grid" id="shop-products-grid">
+
+      </div>
+  </main>
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-name">Lumi<span>è</span>re</div>
+          <p class="footer-brand-desc">A curated selection of exceptional objects, thoughtfully sourced from artisans
+            and designers who share a commitment to quality and craft.</p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Shop</h4>
+          <ul class="footer-links">
+            <li><a href="shop.html">All Products</a></li>
+            <li><a href="shop.html?category=apparel">Apparel</a></li>
+            <li><a href="shop.html?category=accessories">Accessories</a></li>
+            <li><a href="shop.html?category=home">Home & Living</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Help</h4>
+          <ul class="footer-links">
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 Lumière. All rights reserved.</p>
+        <p class="footer-copyright">Designed with intention.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts/script.js"></script>
+</body>
+
+</html>

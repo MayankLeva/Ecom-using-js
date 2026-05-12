@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUMIÈRE — Product Details</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body class="page-top">
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">Lumi<span>è</span>re</a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="cart.html">Cart</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="cart.html" class="cart-icon-btn">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
+            Cart
+            <span class="cart-badge">0</span>
+          </a>
+          <button class="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="cart.html">Cart</a>
+  </div>
+
+  <main class="product-detail-page">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="section-label">Product</p>
+          <h1 class="section-title">Product <em>Details</em></h1>
+        </div>
+        <a href="shop.html" class="btn btn-ghost">Back to shop</a>
+      </div>
+
+      <div class="product-detail-grid">
+        <div class="product-detail-image-wrap">
+          <span class="product-tag" id="product-badge">Featured</span>
+          <img id="product-image" src="" alt="" />
+        </div>
+
+        <div class="product-detail-meta">
+          <p class="product-category" id="product-category">Loading category...</p>
+          <h2 class="product-detail-title" id="product-title">Loading product...</h2>
+
+          <div class="product-detail-pricing">
+            <div class="product-detail-price" id="product-price">$0.00</div>
+            <div class="product-detail-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count" id="product-rating">(0)</span>
+            </div>
+          </div>
+
+          <p class="product-detail-description" id="product-description">
+            Please wait while we load the product information.
+          </p>
+
+          <div class="product-detail-actions">
+            <button id="add-to-cart-detail" class="btn btn-accent add-to-cart-btn" data-product-id="" data-product-name="" data-price="">Add to Cart</button>
+            <a href="cart.html" class="btn btn-outline">Go to Cart</a>
+          </div>
+         
+
+          <div class="product-detail-specs">
+            <div class="spec-row"><span>Category</span><span id="product-detail-category">—</span></div>
+            <div class="spec-row"><span>SKU</span><span id="product-sku">—</span></div>
+            <div class="spec-row"><span>Availability</span><span>In stock</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-detail-secondary">
+        <div class="product-detail-copy">
+          <h3>Bespoke Craftsmanship</h3>
+          <p>Every piece is selected to deliver an elevated everyday experience. The product details page blends editorial design with clean navigation, letting the item shine while preserving the brand's refined luxury tone.</p>
+        </div>
+      </div>
+
+      <div class="product-error-message" id="product-error" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <script src="scripts/script.js"></script>
+  <script src="scripts/product.js"></script>
+</body>
+</html>
