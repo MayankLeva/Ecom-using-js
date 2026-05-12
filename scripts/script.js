@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const filteredProducts = selectedCategory === 'all' || !validCategories.has(selectedCategory)
         ? allProducts
         : allProducts.filter(product => product.category.toLowerCase() === selectedCategory.toLowerCase());
-      
+
       currentProducts = filteredProducts; // Track current products for sorting
       renderProductGrid(filteredProducts);
       console.log('[UI] Filter selected:', selectedCategory, '->', filteredProducts.length, 'products');
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function sortProducts(products, sortValue) {
     const sorted = [...products]; // Create a copy to avoid mutating original
 
-    switch(sortValue) {
+    switch (sortValue) {
       case 'price-asc':
         sorted.sort((a, b) => a.price - b.price);
         break;
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ───────────────────────────────────────────────────────────
      ADD TO CART BUTTONS — UI FEEDBACK ONLY
      ─────────────────────────────────────────────────────────── */
- const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+  const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
 
   addToCartBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -184,10 +184,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // get cart from localStorage on load
   function loadCart() {
-    const savedCart = localStorage.getItem('lumiere_cart');
-    if (savedCart) {
-      try {
-        cartarr = JSON.parse(savedCart);
+    try {
+      const savedCart = localStorage.getItem('lumiere_cart');
+      //console.log('Loading cart from localStorage:', savedCart);  
+      if (savedCart !== null) { 
+        let cartarr = JSON.parse(savedCart);
         let cartlist = '';
         cartarr.forEach(item => {
           cartlist += `
@@ -219,12 +220,14 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           `;
         });
-        cartContainer.innerHTML = cartlist;
-        // console.log('Cart loaded from localStorage:', cartarr);
-      } catch (error) {
-        console.error('Error parsing cart from localStorage:', error);
-        cartarr = [];
+        if (cartContainer) {
+          cartContainer.innerHTML = cartlist;
+        }
+        // console.log('Cart loaded from localStorage:', cartarr); 
       }
+    } catch (error) {
+      console.error('Error parsing cart from localStorage:', error);
+      cartarr = [];
     }
   }
   loadCart();
