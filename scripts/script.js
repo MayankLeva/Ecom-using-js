@@ -31,6 +31,31 @@ function addToCart(product) {
 
 }
 
+/* ───────────────────────────────────────────────────────────
+   CART BADGE — PLACEHOLDER
+   ─────────────────────────────────────────────────────────── */
+function updateCartBadge() {
+  const badge = document.querySelector('.cart-badge');
+  if (!badge) return;
+
+  const total = cartarr.reduce((sum, item) => sum + (item.quantity || 1), 0);
+  badge.textContent = total;
+  badge.style.display = total > 0 ? 'flex' : 'none';
+}
+
+/* ───────────────────────────────────────────────────────────
+   ORDER SUMMARY — TOTAL CALCULATION
+   ─────────────────────────────────────────────────────────── */
+function updateOrderTotal() {
+  const totalEls = document.querySelectorAll('.order-summary-total');
+  if (totalEls.length === 0) return;
+
+  const grandTotal = cartarr.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
+  totalEls.forEach(el => {
+    el.textContent = `$${grandTotal.toFixed(2)}`;
+  });
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const shopGrid = document.getElementById('shop-products-grid');
@@ -188,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const savedCart = localStorage.getItem('lumiere_cart');
       //console.log('Loading cart from localStorage:', savedCart);  
       if (savedCart !== null) { 
-        let cartarr = JSON.parse(savedCart);
+        cartarr = JSON.parse(savedCart);
         let cartlist = '';
         cartarr.forEach(item => {
           cartlist += `
@@ -326,31 +351,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Expose globally so other scripts or inline handlers can use it
   window.showToast = showToast;
-
-  /* ───────────────────────────────────────────────────────────
-     CART BADGE — PLACEHOLDER
-     ─────────────────────────────────────────────────────────── */
-  function updateCartBadge() {
-    const badge = document.querySelector('.cart-badge');
-    if (!badge) return;
-
-    const total = cartarr.reduce((sum, item) => sum + (item.quantity || 1), 0);
-    badge.textContent = total;
-    badge.style.display = total > 0 ? 'flex' : 'none';
-  }
-
-  /* ───────────────────────────────────────────────────────────
-     ORDER SUMMARY — TOTAL CALCULATION
-     ─────────────────────────────────────────────────────────── */
-  function updateOrderTotal() {
-    const totalEls = document.querySelectorAll('.order-summary-total');
-    if (totalEls.length === 0) return;
-
-    const grandTotal = cartarr.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
-    totalEls.forEach(el => {
-      el.textContent = `$${grandTotal.toFixed(2)}`;
-    });
-  }
 
   updateCartBadge();
   updateOrderTotal();
